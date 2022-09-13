@@ -1,0 +1,24 @@
+# permissions for end users to edit occronjobs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: occronjob-editor-role
+rules:
+- apiGroups:
+  - executers.ibm-csm.com
+  resources:
+  - occronjobs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - executers.ibm-csm.com
+  resources:
+  - occronjobs/status
+  verbs:
+  - get

@@ -1,0 +1,7 @@
+---
+# Use the 'create api' subcommand to add watches to this file.
+- version: v1alpha1
+  group: executers.ibm-csm.com
+  kind: OcCronjob
+  role: occronjob
+#+kubebuilder:scaffold:watch

@@ -1,0 +1,6 @@
+apiVersion: executers.ibm-csm.com/v1alpha1
+kind: OcCronjob
+metadata:
+  name: occronjob-sample
+spec:
+  # TODO(user): Add fields here
