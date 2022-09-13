@@ -1,2 +1,24 @@
 ---
-# tasks file for OcCronjob
+- name: oc command
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: batch/v1
+      kind: CronJob
+      metadata:
+        name: '{{ ansible_operator_meta.name }}-oc-command'
+        namespace: '{{ ansible_operator_meta.namespace }}'
+      spec:
+        schedule: '{{ cronjob_schedule }}'
+        jobTemplate:
+          spec:
+            template:
+              spec:
+                serviceAccountName: '{{ service_account }}'
+                containers:
+                - name: oc-command
+                  image: quay.io/openshift/origin-cli:latest
+                  imagePullPolicy: IfNotPresent
+                  command: [ "oc" ]
+                  args: "{{ oc_command_args }}"
+                restartPolicy: Never
+

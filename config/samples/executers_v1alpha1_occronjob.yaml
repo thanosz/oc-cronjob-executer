@@ -2,5 +2,12 @@ apiVersion: executers.ibm-csm.com/v1alpha1
 kind: OcCronjob
 metadata:
   name: occronjob-sample
+  annotations:
+    ansible.operator-sdk/reconcile-period: "30m"
+
 spec:
   # TODO(user): Add fields here
+  oc_command_args: [ "get", "all", "-A" ]
+  cronjob_schedule: "*/2 * * * *"
+  service_account: "oc-executer-controller-manager"
+
